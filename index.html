@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Hub | همه ظرفیت‌های رسانه‌ای، یکجا</title>
+<meta name="description" content="Media Hub بستری برای ارائه و ترکیب ظرفیت‌های رسانه‌ای، تبلیغاتی، محتوایی و ارتباطی برای برندهایی که می‌خواهند بیشتر دیده شوند.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23151a2e%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23d4af6a%22 font-family=%22sans-serif%22 font-weight=%22800%22>M</text></svg>">
+<style>
+  :root{
+    --bg:#0b0d16;
+    --bg-soft:#11142200;
+    --panel:#131628;
+    --panel-2:#171b30;
+    --border:#252a44;
+    --text:#eef0f7;
+    --text-dim:#9aa0bd;
+    --text-faint:#6a6f8d;
+    --accent:#d4af6a;
+    --accent-2:#8b6cf0;
+    --accent-soft:rgba(212,175,106,.12);
+    --grad: linear-gradient(135deg,#8b6cf0 0%, #d4af6a 100%);
+    --radius:18px;
+    --shadow: 0 20px 60px -20px rgba(0,0,0,.55);
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Vazirmatn', sans-serif;
+    background:
+      radial-gradient(1100px 600px at 85% -10%, rgba(139,108,240,.20), transparent 60%),
+      radial-gradient(900px 500px at 5% 0%, rgba(212,175,106,.14), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  section{position:relative; padding:96px 0;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; letter-spacing:.03em;
+    color:var(--accent); background:var(--accent-soft);
+    border:1px solid rgba(212,175,106,.35);
+    padding:7px 16px; border-radius:999px; margin-bottom:22px;
+  }
+  .eyebrow::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--accent);}
+  h1,h2,h3{font-weight:800; letter-spacing:-.01em;}
+  .section-title{font-size:clamp(26px,3.4vw,40px); margin-bottom:16px;}
+  .section-sub{color:var(--text-dim); font-size:16.5px; max-width:640px; margin-bottom:52px;}
+  .center{text-align:center; margin-inline:auto;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed; inset-inline:0; top:0; z-index:100;
+    backdrop-filter:blur(14px);
+    background:rgba(11,13,22,.72);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; height:78px;}
+  .logo{display:flex; align-items:center; gap:10px; font-size:19px; font-weight:800;}
+  .logo .mark{
+    width:36px; height:36px; border-radius:10px; background:var(--grad);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900; color:#0b0d16; font-size:17px;
+  }
+  .logo .sub{color:var(--text-faint); font-weight:500; font-size:12px; display:block; margin-top:1px;}
+  nav.links{display:flex; align-items:center; gap:34px; font-size:15px; color:var(--text-dim);}
+  nav.links a{transition:color .2s;}
+  nav.links a:hover{color:var(--text);}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:13px 26px; border-radius:12px; font-weight:700; font-size:15px;
+    border:1px solid transparent; cursor:pointer; transition:transform .18s, box-shadow .18s, opacity .18s;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--grad); color:#101223; box-shadow:0 12px 30px -10px rgba(139,108,240,.55);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 16px 36px -8px rgba(139,108,240,.65);}
+  .btn-ghost{background:transparent; border:1px solid var(--border); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+  .nav-cta{display:none;}
+  .burger{display:none;}
+  @media(max-width:900px){
+    nav.links{display:none;}
+    .nav-cta{display:none;}
+    .burger{display:block; width:40px; height:40px; border-radius:10px; border:1px solid var(--border); background:none; color:var(--text);}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:170px 0 110px; text-align:center;}
+  .hero h1{font-size:clamp(34px,5.4vw,60px); line-height:1.28; margin-bottom:22px;}
+  .hero h1 span{
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p{color:var(--text-dim); font-size:18px; max-width:680px; margin:0 auto 40px;}
+  .hero-actions{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .hero-grid-bg{
+    position:absolute; inset:0; top:0; height:640px; z-index:-1;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 60% 50% at 50% 0%, #000 40%, transparent 90%);
+  }
+
+  /* ---------- Stats strip (from real holding data) ---------- */
+  .stats{padding:0 0 40px;}
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--border); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;
+  }
+  .stat-card{background:var(--panel); padding:32px 20px; text-align:center;}
+  .stat-num{font-size:clamp(24px,2.6vw,34px); font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums;}
+  .stat-label{color:var(--text-dim); font-size:13.5px; margin-top:8px;}
+  @media(max-width:760px){ .stats-grid{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---------- About ---------- */
+  .about-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+    padding:48px; box-shadow:var(--shadow);
+  }
+  .about-card p{color:var(--text-dim); font-size:17px; max-width:820px;}
+
+  /* ---------- Services ---------- */
+  .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.services-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:16px;
+    padding:30px; transition:border-color .2s, transform .2s, background .2s;
+  }
+  .service-card:hover{border-color:rgba(212,175,106,.5); transform:translateY(-4px); background:var(--panel-2);}
+  .service-icon{
+    width:48px; height:48px; border-radius:12px; background:var(--accent-soft);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+    color:var(--accent);
+  }
+  .service-card h3{font-size:17.5px; margin-bottom:10px;}
+  .service-card p{color:var(--text-dim); font-size:14.5px;}
+
+  /* ---------- Wave / flow section ---------- */
+  .wave{
+    background:var(--panel); border:1px solid var(--border); border-radius:24px; padding:56px 40px;
+  }
+  .wave h2{font-size:clamp(24px,3vw,34px); margin-bottom:16px;}
+  .wave > p{color:var(--text-dim); font-size:16.5px; max-width:680px; margin-bottom:44px;}
+  .flow{display:flex; align-items:center; gap:0; flex-wrap:wrap; justify-content:center;}
+  .flow-step{
+    background:var(--bg); border:1px solid var(--border); border-radius:12px;
+    padding:14px 20px; font-size:14.5px; font-weight:600; color:var(--text);
+    white-space:nowrap;
+  }
+  .flow-arrow{color:var(--accent); font-size:18px; padding:0 10px;}
+  @media(max-width:760px){
+    .flow{flex-direction:column;}
+    .flow-arrow{transform:rotate(90deg); padding:6px 0;}
+  }
+
+  /* ---------- Goals ---------- */
+  .goals-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media(max-width:900px){.goals-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.goals-grid{grid-template-columns:1fr;}}
+  .goal-card{
+    position:relative; border:1px solid var(--border); border-radius:16px; padding:26px;
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    overflow:hidden;
+  }
+  .goal-card::before{
+    content:""; position:absolute; inset-inline-start:0; top:0; bottom:0; width:3px; background:var(--grad);
+  }
+  .goal-card h3{font-size:16.5px; margin-bottom:8px;}
+  .goal-card p{color:var(--text-dim); font-size:14px;}
+
+  /* ---------- Event ---------- */
+  .event{
+    background:linear-gradient(120deg, rgba(139,108,240,.16), rgba(212,175,106,.10));
+    border:1px solid var(--border); border-radius:24px;
+    padding:52px 44px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;
+  }
+  .event-info .eyebrow{margin-bottom:16px;}
+  .event h2{font-size:clamp(22px,2.8vw,30px); margin-bottom:14px;}
+  .event-meta{display:flex; gap:28px; flex-wrap:wrap; margin-top:18px;}
+  .event-meta div{font-size:14.5px; color:var(--text-dim);}
+  .event-meta strong{display:block; color:var(--text); font-size:16px; margin-bottom:3px;}
+
+  /* ---------- Contact ---------- */
+  .contact-wrap{display:grid; grid-template-columns:1fr 1.15fr; gap:48px; align-items:start;}
+  @media(max-width:900px){.contact-wrap{grid-template-columns:1fr;}}
+  .contact-side h2{font-size:clamp(24px,3vw,34px); margin-bottom:18px;}
+  .contact-side p{color:var(--text-dim); font-size:16px; margin-bottom:28px;}
+  .contact-points{display:flex; flex-direction:column; gap:16px;}
+  .contact-point{display:flex; gap:14px; align-items:flex-start;}
+  .contact-point .dot{
+    width:34px; height:34px; flex-shrink:0; border-radius:9px; background:var(--accent-soft); color:var(--accent);
+    display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;
+  }
+  .contact-point div p{color:var(--text-dim); font-size:14px; margin:0;}
+  .contact-point div strong{font-size:15px; display:block; margin-bottom:2px;}
+
+  form.card{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+    padding:36px; box-shadow:var(--shadow);
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+  .field{margin-bottom:18px;}
+  .field label{display:block; font-size:13.5px; color:var(--text-dim); margin-bottom:8px;}
+  .field input, .field select{
+    width:100%; background:var(--bg); border:1px solid var(--border); border-radius:10px;
+    padding:12px 14px; color:var(--text); font-family:inherit; font-size:14.5px; outline:none;
+    transition:border-color .2s;
+  }
+  .field input:focus, .field select:focus{border-color:var(--accent);}
+  .field select{appearance:none; cursor:pointer;}
+  form.card button{width:100%; margin-top:6px;}
+  .form-note{font-size:12.5px; color:var(--text-faint); margin-top:14px; text-align:center;}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--border); padding:44px 0; margin-top:20px;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .footer-row .logo{font-size:16px;}
+  footer .copy{color:var(--text-faint); font-size:13.5px;}
+
+  ::selection{background:var(--accent); color:#101223;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      <span class="mark">M</span>
+      <span>MEDIA HUB<span class="sub">هلدینگ رسانه‌ای</span></span>
+    </div>
+    <nav class="links">
+      <a href="#services">خدمات</a>
+      <a href="#about">درباره</a>
+      <a href="#goals">راهکارها</a>
+      <a href="#event">رویداد</a>
+      <a href="#contact">تماس</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary">دریافت مشاوره رسانه‌ای</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="wrap">
+      <div class="eyebrow">MEDIA HUB — همه ظرفیت‌های رسانه‌ای، یکجا</div>
+      <h1>راهکارهای <span>رسانه‌ای، تبلیغاتی و محتوایی</span><br>برای برندهایی که می‌خواهند بیشتر دیده شوند</h1>
+      <p>ارتباطی مؤثرتر با مخاطبان خود بسازید؛ با ترکیب ظرفیت‌های خبری، تبلیغاتی و شبکه‌های اجتماعی هلدینگ رسانه‌ای ما.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">دریافت مشاوره رسانه‌ای</a>
+        <a href="#services" class="btn btn-ghost">مشاهده خدمات</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS (real holding capacity data) -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">۴۷۲+</div>
+          <div class="stat-label">رسانه و کانال فعال</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">۸</div>
+          <div class="stat-label">پلتفرم رسانه‌ای و اجتماعی</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">۷۳M+</div>
+          <div class="stat-label">مجموع مخاطبین</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">۱۰M+</div>
+          <div class="stat-label">بازدید روزانه محتوا</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow">Media Hub چیست؟</div>
+      <h2 class="section-title">یک بستر، تمام ظرفیت‌های رسانه‌ای شما</h2>
+      <div class="about-card">
+        <p>
+          Media Hub بستری برای ارائه و ترکیب ظرفیت‌های رسانه‌ای، تبلیغاتی، محتوایی و ارتباطی است؛
+          جایی که برندها می‌توانند متناسب با اهداف خود، از ظرفیت‌های مختلف رسانه‌ای و تبلیغاتی
+          برای افزایش دیده‌شدن، اعتبارسازی و ارتباط مؤثر با مخاطبان استفاده کنند.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="eyebrow">خدمات ما</div>
+      <h2 class="section-title">مجموعه کامل خدمات رسانه‌ای</h2>
+      <p class="section-sub">از انتشار خبر تا طراحی کمپین‌های چندمرحله‌ای؛ هر آنچه برند شما برای دیده‌شدن نیاز دارد.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📰</div>
+          <h3>انتشار خبر</h3>
+          <p>انتشار اخبار، دستاوردها، محصولات و رویدادهای برند در رسانه‌های معتبر.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">✍️</div>
+          <h3>رپورتاژ آگهی</h3>
+          <p>تولید و انتشار محتوای اختصاصی برای معرفی برند، محصول یا خدمت.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎙️</div>
+          <h3>مصاحبه اختصاصی</h3>
+          <p>گفت‌وگو با مدیران و چهره‌های کلیدی برند و انتشار آن در رسانه‌ها.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📢</div>
+          <h3>تبلیغات رسانه‌ای</h3>
+          <p>ارائه انواع ظرفیت‌های تبلیغاتی در رسانه‌ها و پلتفرم‌های دیجیتال.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>تبلیغات شبکه‌های اجتماعی</h3>
+          <p>انتشار و توزیع محتوا در شبکه‌های اجتماعی و کانال‌های پرمخاطب.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎪</div>
+          <h3>پوشش خبری رویدادها</h3>
+          <p>پوشش رسانه‌ای نمایشگاه‌ها، همایش‌ها، افتتاحیه‌ها و رویدادهای برند.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚀</div>
+          <h3>کمپین رسانه‌ای</h3>
+          <p>طراحی و اجرای کمپین‌های چندمرحله‌ای برای افزایش آگاهی و ایجاد موج رسانه‌ای.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎬</div>
+          <h3>تولید محتوا</h3>
+          <p>تولید محتوای خبری، تبلیغاتی، متنی، تصویری و ویدئویی متناسب با نیاز برند.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔗</div>
+          <h3>روابط عمومی رسانه‌ای</h3>
+          <p>تبدیل اخبار و دستاوردهای برند به محتوای قابل انتشار و ایجاد جریان رسانه‌ای.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE / FLOW -->
+  <section>
+    <div class="wrap">
+      <div class="wave">
+        <h2>فقط تبلیغ نمی‌کنیم؛ موج می‌سازیم.</h2>
+        <p>یک کمپین موفق فقط به انتشار یک تبلیغ محدود نمی‌شود. با ترکیب ظرفیت‌های رسانه‌ای، خبری،
+          محتوایی و شبکه‌های اجتماعی، پیام برند را در چند نقطه به مخاطب می‌رسانیم.</p>
+        <div class="flow">
+          <div class="flow-step">هدف برند</div><div class="flow-arrow">←</div>
+          <div class="flow-step">استراتژی رسانه‌ای</div><div class="flow-arrow">←</div>
+          <div class="flow-step">تولید محتوا</div><div class="flow-arrow">←</div>
+          <div class="flow-step">انتشار</div><div class="flow-arrow">←</div>
+          <div class="flow-step">توزیع و بازنشر</div><div class="flow-arrow">←</div>
+          <div class="flow-step">دیده‌شدن</div><div class="flow-arrow">←</div>
+          <div class="flow-step">اثرگذاری</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOALS -->
+  <section id="goals">
+    <div class="wrap">
+      <div class="eyebrow">بر اساس هدف شما</div>
+      <h2 class="section-title">هر هدف، یک راهکار رسانه‌ای</h2>
+      <p class="section-sub">متناسب با نیاز برند شما، ترکیب مناسبی از خدمات را پیشنهاد می‌دهیم.</p>
+      <div class="goals-grid">
+        <div class="goal-card"><h3>معرفی برند</h3><p>افزایش آگاهی و دیده‌شدن برند</p></div>
+        <div class="goal-card"><h3>معرفی محصول</h3><p>ترکیب خبر، رپورتاژ و تبلیغات</p></div>
+        <div class="goal-card"><h3>پوشش رویداد</h3><p>گزارش، مصاحبه و پوشش خبری</p></div>
+        <div class="goal-card"><h3>اعتبارسازی</h3><p>مصاحبه، محتوای تخصصی و حضور رسانه‌ای</p></div>
+        <div class="goal-card"><h3>موج‌سازی</h3><p>طراحی و اجرای کمپین رسانه‌ای</p></div>
+        <div class="goal-card"><h3>تبلیغات</h3><p>انتخاب ظرفیت مناسب برای رسیدن به مخاطب هدف</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT -->
+  <section id="event">
+    <div class="wrap">
+      <div class="event">
+        <div class="event-info">
+          <div class="eyebrow">حضور در نمایشگاه</div>
+          <h2>در الکامپ، نزدیک‌تر از همیشه</h2>
+          <div class="event-meta">
+            <div><strong>۹ تا ۱۲ تیرماه ۱۴۰۵</strong>زمان برگزاری</div>
+            <div><strong>نمایشگاه بین‌المللی تهران</strong>محل برگزاری</div>
+            <div><strong>سالن ۶، غرفه ۳۲</strong>موقعیت غرفه</div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary">برای همکاری رسانه‌ای با ما در ارتباط باشید</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-wrap">
+        <div class="contact-side">
+          <div class="eyebrow">درخواست مشاوره</div>
+          <h2>برای برندتان یک پیشنهاد رسانه‌ای بسازیم.</h2>
+          <p>اطلاعات خود را ثبت کنید تا بر اساس نیاز و هدف برندتان، ظرفیت‌های مناسب رسانه‌ای و تبلیغاتی به شما پیشنهاد شود.</p>
+          <div class="contact-points">
+            <div class="contact-point">
+              <div class="dot">۱</div>
+              <div><strong>تحلیل نیاز برند</strong><p>بررسی اهداف و انتخاب بهترین ترکیب خدمات</p></div>
+            </div>
+            <div class="contact-point">
+              <div class="dot">۲</div>
+              <div><strong>پیشنهاد ظرفیت‌ها</strong><p>معرفی رسانه‌ها و پلتفرم‌های متناسب با مخاطب هدف</p></div>
+            </div>
+            <div class="contact-point">
+              <div class="dot">۳</div>
+              <div><strong>اجرا و پیگیری</strong><p>انتشار، توزیع و گزارش‌گیری از نتایج کمپین</p></div>
+            </div>
+          </div>
+        </div>
+
+        <form class="card" id="leadForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="fullname">نام و نام خانوادگی</label>
+              <input id="fullname" name="fullname" type="text" required>
+            </div>
+            <div class="field">
+              <label for="company">نام شرکت / برند</label>
+              <input id="company" name="company" type="text">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="phone">شماره تماس</label>
+              <input id="phone" name="phone" type="tel" required>
+            </div>
+            <div class="field">
+              <label for="industry">حوزه فعالیت</label>
+              <input id="industry" name="industry" type="text">
+            </div>
+          </div>
+          <div class="field">
+            <label for="type">نوع همکاری موردنظر</label>
+            <select id="type" name="type">
+              <option>تبلیغات</option>
+              <option>انتشار خبر</option>
+              <option>رپورتاژ</option>
+              <option>مصاحبه</option>
+              <option>پوشش خبری</option>
+              <option>کمپین رسانه‌ای</option>
+              <option>تولید محتوا</option>
+              <option>شبکه‌های اجتماعی</option>
+              <option>سایر</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">درخواست مشاوره</button>
+          <p class="form-note">اطلاعات شما فقط برای تماس مشاور رسانه‌ای Media Hub استفاده می‌شود.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="logo"><span class="mark">M</span> MEDIA HUB</div>
+    <div class="copy">© ۱۴۰۵ Media Hub — تمامی حقوق محفوظ است.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('leadForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var fd = new FormData(this);
+    var subject = encodeURIComponent('درخواست مشاوره رسانه‌ای - ' + (fd.get('company') || fd.get('fullname')));
+    var body = encodeURIComponent(
+      'نام: ' + fd.get('fullname') + '\n' +
+      'شرکت/برند: ' + fd.get('company') + '\n' +
+      'شماره تماس: ' + fd.get('phone') + '\n' +
+      'حوزه فعالیت: ' + fd.get('industry') + '\n' +
+      'نوع همکاری: ' + fd.get('type')
+    );
+    window.location.href = 'mailto:info@mediahub.example?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
